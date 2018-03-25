@@ -1,0 +1,10 @@
+server:
+  port: 1001
+
+# 默认情况下 eureka 会将自己注册一个客户端，服务端不需要，所以我们将它关闭。
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    hostname: localhost
