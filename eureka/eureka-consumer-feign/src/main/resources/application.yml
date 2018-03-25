@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka-consumer-ferign
+server:
+  port: 1004
+
+# 对应服务中心的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:1001/eureka/"
