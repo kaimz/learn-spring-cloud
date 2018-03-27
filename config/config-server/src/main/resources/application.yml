@@ -10,13 +10,5 @@ spring:
         git:
           uri: https://github.com/kaimz/learn-spring-cloud.git # 配置文件的仓库地址
           search-paths: config/config-repo # 配置文件的相对路径
-          username: kaimz # git 的账户
-          password: zk@595165463 # git 密码
-
-# 对应服务中心的地址
-eureka:
-  client:
-    service-url:
-      defaultZone: "http://localhost:1001/eureka/"
-
-
+          username: username # git 的账户
+          password: password # git 密码
