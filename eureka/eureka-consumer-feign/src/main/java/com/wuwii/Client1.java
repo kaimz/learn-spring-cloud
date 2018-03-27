@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @version 1.0
  * @since <pre>2018/3/25 11:26</pre>
  */
-@FeignClient("eureka-client-1")
+@FeignClient("eureka-producer-1")
 public interface Client1 {
 
     /**
