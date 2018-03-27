@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka-consumer-hystrix
+server:
+  port: 1008
+
+# 对应服务中心的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
