@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: config-client # 配置中心对应的文件名，最好和 application-name 一样
+      profile: test
+      uri: http://localhost:1006 # 配置中心的具体地址
+      label: master # git 分支，如果配置中心使用的是本地存储，则该参数无用
