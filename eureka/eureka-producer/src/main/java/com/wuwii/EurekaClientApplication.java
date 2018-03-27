@@ -30,10 +30,10 @@ public class EurekaClientApplication {
     /**
      * 服务提供者，测试提供某个服务出去，让消费者进行消费，查看测试的日志输出，注册中心已经注册了的服务名称，
      */
-	@GetMapping()
+	@GetMapping
     public String dc() {
         String service = discoveryClient.getServices().toString();
         log.info(">>>>>>>> service : {}", service);
-        return service;
+        return "I am the first producer";
     }
 }

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: eureka-client-1
+    name: eureka-producer-1
 
 # 对应服务中心的地址
 eureka:
