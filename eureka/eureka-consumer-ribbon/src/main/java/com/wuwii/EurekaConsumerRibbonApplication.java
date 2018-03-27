@@ -29,7 +29,7 @@ public class EurekaConsumerRibbonApplication {
 
 	@GetMapping("/consume")
 	public String consume() {
-		return restTemplate().getForObject("http://eureka-client-1/", String.class);
+		return restTemplate().getForObject("http://eureka-producer-1/", String.class);
 	}
 
 }
