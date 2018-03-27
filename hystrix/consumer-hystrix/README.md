@@ -1,4 +1,4 @@
-熔断器 Hystrix 的使用
+在Ribbon上实现熔断器hystrix
 
 1. 添加相应的 jar 包 `spring-cloud-starter-hystrix`
 2. 在启动类上加上开启注解 `@EnableCircuitBreaker `
