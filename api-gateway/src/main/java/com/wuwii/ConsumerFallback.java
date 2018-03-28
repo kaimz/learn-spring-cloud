@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * 针对某个微服务的异常状态进行控制，
+ * 这个方法是对 feign-hystrix 的微服务的异常状态进行控制，服务有问题需要降级返回这个类中的错误信息
  * @author Zhang Kai
  * @version 1.0
  * @since <pre>2018/3/28 18:58</pre>
@@ -25,11 +27,12 @@ public class ConsumerFallback implements FallbackProvider {
      */
     private static final Logger log = LoggerFactory.getLogger(ConsumerFallback.class);
     /**
-     * 返回需要进行服务降级的服务名
+     * 返回需要进行服务降级的服务名，
+     * 注意的是注册到eureka中的服务名，服务网关中的 serviceId
      */
     @Override
     public String getRoute() {
-        return "consumer";
+        return "feign-hystrix";
     }
 
     @Override
