@@ -51,7 +51,7 @@ public class ConsumerFallback implements FallbackProvider {
 
             @Override
             public String getStatusText() throws IOException {
-                return "Bad Request";
+                return HttpStatus.BAD_REQUEST.getReasonPhrase();
             }
 
             @Override
