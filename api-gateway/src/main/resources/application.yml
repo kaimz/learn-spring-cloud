@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://k.wuwii.com:1001/eureka/
+zuul:
+  routes:
+    # 下面可以配置多个路由的请求规则，我做了一个 名为 consumer 的路由,
+    # 例，想访问 feign-hystrix 我们可以通过 zuul 路由，访问 url http://localhost:8080/consumer/xxx
+    consumer:
+      path: /consumer/** # 指定映射的 path，访问时候加上这个 Path 就是请求哪个服务，注意规则一定要写对，前面的 “/”也不能少
+      serviceId: feign-hystrix # 映射的注册的服务名
+   #consumer1:
+      #path: xxx
+      #servuceId: xxx
