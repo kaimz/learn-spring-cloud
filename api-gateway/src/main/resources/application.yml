@@ -5,6 +5,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://k.wuwii.com:1001/eureka/
+# 避免服务提供者降级后出现 read timeout 的问题
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
 zuul:
   routes:
     # 下面可以配置多个路由的请求规则，我做了一个 名为 consumer 的路由,

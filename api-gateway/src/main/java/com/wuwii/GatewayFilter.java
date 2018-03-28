@@ -65,6 +65,7 @@ public class GatewayFilter extends ZuulFilter {
             // false 不进行路由，并返回 401 状态码
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+            ctx.setResponseBody("Miss the token.");
             return null;
         }
         log.info("The token is {}", token);
