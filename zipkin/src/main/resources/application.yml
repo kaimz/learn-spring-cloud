@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zipkin-server
+server:
+  port: 1010
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://k.wuwii.com:1001/eureka
+
