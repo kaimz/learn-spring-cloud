@@ -1,0 +1,28 @@
+server:
+  port: 8012
+
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      #default-filters:
+      #- AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      routes:
+      - id: feign-hystrix
+        uri: lb://feign-hystrix:1009
+        order: 8000
+        predicates:
+        - Path=/consumer/**
+        filters:
+        - StripPrefix=1
+        # filters:
+        # - RewritePath=/demo/(?<segment>.*), /$\{segment}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://k.wuwii.com:1001/eureka
+
+
