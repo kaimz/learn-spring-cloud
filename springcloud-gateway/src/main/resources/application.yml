@@ -6,23 +6,42 @@ spring:
     name: springcloud-gateway
   cloud:
     gateway:
-      locator:
-        enabled: true
+      enable: true # 参考类 GatewayAutoConfiguration， 网关开启与关闭
+      # 设置全局的过滤器。
       #default-filters:
       #- AddResponseHeader=X-Response-Default-Foo, Default-Bar
+
+      # 设置 route
       routes:
-      - id: feign-hystrix
-        uri: lb://feign-hystrix:1009
-        order: 8000
+      - id: feign-hystrix1
+        uri: lb://feign-hystrix
+        order: -1 # int 当请求匹配到多个路由时，使用 order 值小的路由，默认为 0，因此我们使用服务发现组件进行注册的路由的  Order都为0。
         predicates:
         - Path=/consumer/**
         filters:
         - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: forward:/fallback
+
+        #- Hystrix=myCommandName # 熔断器
         # filters:
         # - RewritePath=/demo/(?<segment>.*), /$\{segment}
 eureka:
   client:
     service-url:
       defaultZone: http://k.wuwii.com:1001/eureka
+
+# 目前 Hystrix Command 执行超时时，返回客户端 504 状态码，
+# 如果使用 JSON 格式作为数据返回，则需要修改下该 HystrixGatewayFilter 的代码实现。
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
 
 
