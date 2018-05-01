@@ -1,0 +1,16 @@
+server:
+  port: 2001
+spring:
+  application:
+    name: @pom.artifactId@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka
+
+security:
+  oauth2:
+    resource:
+      id: service-1
+      user-info-uri: http://localhost:1002/oauth2-server/user
+      prefer-token-info: false

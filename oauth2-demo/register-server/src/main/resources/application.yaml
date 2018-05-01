@@ -1,0 +1,10 @@
+server:
+  port: 1001
+spring:
+  application:
+    name: @pom.artifactId@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
