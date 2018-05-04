@@ -12,6 +12,7 @@
         <module>resource-second</module>
         <module>register-server</module>
         <module>api-gateway</module>
+        <module>zuul-gateway</module>
     </modules>
     <packaging>pom</packaging>
 

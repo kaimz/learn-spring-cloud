@@ -1,12 +1,18 @@
 spring:
   application:
     name: @pom.artifactId@
+  cloud:
+    gateway:
+      enable: true
+      default-filters:
+      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
 server:
   port: 1002
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1001/eureka
+    #proxy-user-name: api
 # 目前 Hystrix Command 执行超时时，返回客户端 504 状态码，
 # 如果使用 JSON 格式作为数据返回，则需要修改下该 HystrixGatewayFilter 的代码实现。
 hystrix:
@@ -17,12 +23,3 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 
-security:
-  oauth2:
-    client:
-      access-token-uri: http://localhost:1002/oauth2-server/oauth/token
-      user-authorization-uri: http://localhost:1002/oauth2-server/oauth/authorize
-      client-id: gateway
-    resource:
-      user-info-uri: http://localhost:1002/oauth2-server//user
-      prefer-token-info: false

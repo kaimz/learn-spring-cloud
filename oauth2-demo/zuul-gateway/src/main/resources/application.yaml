@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: @pom.artifactId@
+server:
+  port: 1002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1001/eureka/
+
+zuul:
+  routes:
+    uaa:
+      path: /uaa/**
+      sensitiveHeaders:
+      serviceId: oauth2-server
+    order:
+      path: /one/**
+      sensitiveHeaders:
+      serviceId: resource-first
+  add-proxy-headers: true
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:1002/uaa/oauth/token
+      user-authorization-uri: http://localhost:1002/uaa/oauth/authorize
+      client-id: gateway
+    resource:
+      user-info-uri: http://localhost:1002/uaa/user
+      prefer-token-info: false

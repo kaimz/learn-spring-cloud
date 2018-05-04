@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: @pom.artifactId@
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 eureka:
   client:
     service-url:
@@ -10,7 +13,12 @@ eureka:
 
 security:
   oauth2:
+
+
+security:
+  oauth2:
     resource:
       id: service-1
-      user-info-uri: http://localhost:1002/oauth2-server/user
+      user-info-uri: http://localhost:1002/uaa/user
       prefer-token-info: false
+

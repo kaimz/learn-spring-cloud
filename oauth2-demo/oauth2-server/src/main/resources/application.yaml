@@ -3,8 +3,14 @@ server:
 spring:
   application:
     name: @pom.artifactId@
+  redis:
+    host: 192.168.19.200
+    password: master
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1001/eureka
+  instance:
+    prefer-ip-address: true
+
